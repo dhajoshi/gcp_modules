@@ -1,12 +1,5 @@
-// main.tf
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
+// modules/service-enable/main.tf
 resource "google_project_service" "service" {
-  for_each = toset(var.services)
-
   project = var.project_id
-  service = each.value
+  service = var.service
 }
